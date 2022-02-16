@@ -13,7 +13,7 @@ const campgrounds = require('../controllers/campgrounds');
 
 router.route('/')
     .get(catchAsync(campgrounds.index))
-    post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground))
+    .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground))
 
 
 router.get('/new', isLoggedIn, (req, res) => {

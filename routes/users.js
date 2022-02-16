@@ -19,7 +19,7 @@ router.route('/login')
     .get((req, res) => {
         res.render('users/login');
     })
-    post(passport.authenticate('local', {
+    .post(passport.authenticate('local', {
         failureFlash: true,
         failureRedirect: '/login'
     }), users.loginUser)
