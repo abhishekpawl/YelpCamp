@@ -6,6 +6,9 @@ const { campgroundSchema } = require('../schemas.js');
 const ExpressError = require('../utils/ExpressError');
 const flash = require('connect-flash');
 const { isLoggedIn, validateCampground, isAuthorized } = require('../middleware');
+const multer = require('multer');
+const {storage} = require('../cloudinary');
+const upload = multer({storage});
 
 // controller
 const campgrounds = require('../controllers/campgrounds');
@@ -13,7 +16,7 @@ const campgrounds = require('../controllers/campgrounds');
 
 router.route('/')
     .get(catchAsync(campgrounds.index))
-    .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground))
+    .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgrounds.createCampground))
 
 
 router.get('/new', isLoggedIn, (req, res) => {
