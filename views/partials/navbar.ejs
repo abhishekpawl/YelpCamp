@@ -14,9 +14,10 @@
                 <% if(!currentUser) { %>
                     <a href="/login" class="nav-link">Login</a>
                     <a href="/register" class="nav-link">Register</a>
-                    <% } else { %>
-                        <a href="/logout" class="nav-link">Logout</a>
-                        <% } %>
+                <% } else { %>
+                    <h5 style="color: rgb(50, 240, 33);" class="nav-link"><%= currentUser.username %></h5>
+                    <a href="/logout" class="nav-link">Logout</a>
+                <% } %>
             </div>
         </div>
     </div>

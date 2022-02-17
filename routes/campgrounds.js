@@ -26,7 +26,7 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 router.route('/:id')
     .get(catchAsync(campgrounds.showCampground))
-    .put(isLoggedIn, isAuthorized, validateCampground, catchAsync(campgrounds.updateCampground))
+    .put(isLoggedIn, isAuthorized, upload.array('image'), validateCampground, catchAsync(campgrounds.updateCampground))
     .delete(isLoggedIn, isAuthorized, catchAsync(campgrounds.deleteCampground))
 
 
