@@ -1,5 +1,9 @@
 const Campground = require('../models/campground');
 const {cloudinary} = require('../cloudinary');
+const mapboxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+
+const mapboxToken = process.env.MAPBOX_TOKEN;
+const geocoder = mapboxGeocoding({accessToken: mapboxToken});
 
 const index = async(req, res) => {
   const campgrounds = await Campground.find({});
@@ -7,7 +11,12 @@ const index = async(req, res) => {
 }
 
 const createCampground = async(req, res, next) => {
+  const geodata = await geocoder.forwardGeocode({
+    query: req.body.campground.location,
+    limit: 1
+  }).send();
   const campground = new Campground(req.body.campground);
+  campground.geometry = geodata.body.features[0].geometry;
   campground.images = req.files.map(f => ({url: f.path, filename: f.filename}));
   campground.author = req.user._id;
   await campground.save();
