@@ -32,7 +32,7 @@ const loginUser = (req, res) => {
 const logoutUser = (req, res) => {
   req.logOut();
   req.flash('success', 'Goodbye!');
-  res.redirect('/campgrounds');
+  res.redirect('/');
 }
 
 module.exports = {
