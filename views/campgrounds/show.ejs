@@ -3,7 +3,6 @@
 
     <div class="row">
         <div class="col-6">
-            <div id="map" style="width: auto; height: 300px;"></div>
             <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <% campground.images.forEach((img, index) => { %>
@@ -58,8 +57,9 @@
             </div>
         </div>
         <div class="col-6">
+            <div id="map" style="width: auto; height: 300px;" class="mb-1"></div>
             <% if(currentUser) { %>
-                <h2>Leave a Review</h2>
+                <h2 class="text-white">Leave a Review</h2>
                 <form action="/campgrounds/<%= campground._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
                     <!-- <div class="mb-3">
                         <label class="form-label" for="rating">Rating</label>
@@ -79,7 +79,7 @@
                         <label for="first-rate5" title="Amazing">5 stars</label>
                     </fieldset>
                     <div class="mb-3">
-                        <label class="form-label" for="body">Review</label>
+                        <label class="form-label text-white" for="body">Review</label>
                         <textarea class="form-control" name="review[body]" id="body" cols="20" rows="3" required></textarea>
                         <div class="valid-feedback">
                             Looks good!
