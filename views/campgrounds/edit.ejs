@@ -1,7 +1,25 @@
 <% layout('layouts/boilerplate') %>
-<div class="row">
-  <h1 class="text-center">Edit Campground</h1>
-  <div class="col-6 offset-3">
+<style>
+  .form-label {
+    color: white;
+  }
+  .col-md-6 {
+    border: 1px white solid;
+    border-radius: 1.2%;
+    padding-top: 5px;
+  }
+  #back-link, #back-link:hover {
+    color: white;
+    text-decoration: none;
+  }
+  #back-link:hover {
+    color: antiquewhite;
+    border-bottom: 1px white solid;
+  }
+</style>
+
+<div class="row mb-5">
+  <div class="col-md-6 offset-md-3">
     <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
@@ -52,7 +70,7 @@
       </div>
     </form>
     <div class="mb-3">
-      <a href="/campgrounds/<%= campground._id %>">Back To Campground</a>
+      <a id="back-link" href="/campgrounds/<%= campground._id %>">Back To Campground</a>
     </div>
   </div>
 </div>
