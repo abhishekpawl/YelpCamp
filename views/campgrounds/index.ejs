@@ -1,8 +1,8 @@
 <% layout('layouts/boilerplate') %>
 <div id="map" style="width: auto; height: 400px;"></div>
-<h1>All Campgrounds</h1>
+<h1 style="color: white; margin-top: 2%;">All Campgrounds</h1>
 <div class="mb-3">
-  <a href="/campgrounds/new">Add Campground</a>
+  <a href="/campgrounds/new" role="button" class="btn btn-dark">Add Campground</a>
 </div>
 <% for(let campground of campgrounds) { %>
   <div class="card mb-3">
