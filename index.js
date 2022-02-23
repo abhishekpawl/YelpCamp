@@ -43,6 +43,7 @@ app.use(mongoSanitize());
 
 /* Session */
 const sessionConfig = {
+    name: 'session',
     secret: 'secretString',
     resave: false,
     saveUninitialized: true,
